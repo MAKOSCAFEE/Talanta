@@ -1,2 +1,4 @@
-# Talanta
-home where talents live
+Talanta 
+==========
+
+A platform where talents are given life and displayed
