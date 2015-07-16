@@ -1,7 +1,10 @@
 {
-    "name": "Talanta",
+    "name": "talantaz",
     "version": "1.0.0",
-    "main": "server.js",
+    "private": true,
+    "scripts": {
+        "start": "node server.js"
+    },
     "dependencies": {
         "agenda": "^0.6.10",
         "async": "^0.8.0",
@@ -33,10 +36,5 @@
         "karma-chrome-launcher": "^0.1.4",
         "karma-jasmine": "^0.1.5",
         "karma-phantomjs-launcher": "^0.1.4"
-    },
-    "scripts": {
-        "start": "node server.js",
-        "test": "karma start public/test/karma.conf.js"
-    },
-    "private": true
+    }
 }
