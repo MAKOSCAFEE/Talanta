@@ -34,9 +34,6 @@
         "karma-jasmine": "^0.1.5",
         "karma-phantomjs-launcher": "^0.1.4"
     },
-    "engines": {
-        "node": "^0.10.19"
-    },
     "scripts": {
         "start": "node server.js",
         "test": "karma start public/test/karma.conf.js"
