@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
+var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
     name: {
@@ -45,27 +46,34 @@ var userSchema = new Schema({
 
 userSchema.pre('save', function(next) {
     var user = this;
+    var currentDate = new Date();
+
+    // change the updated_at field to current date
+    user.updated_at = currentDate;
+
+    // if created_at doesn't exist, add to that field
+    if (!user.created_at)
+        user.created_at = currentDate;
+
+    // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
-    bcrypt.genSalt(10, function(err, salt) {
+
+    // generate a salt
+    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
         if (err) return next(err);
+
+        // hash the password along with our new salt
         bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err);
+
+            // override the cleartext password with the hashed one
             user.password = hash;
             next();
         });
     });
-
-    var currentDate = new Date();
-
-    // change the updated_at field to current date
-    this.updated_at = currentDate;
-
-    // if created_at doesn't exist, add to that field
-    if (!this.created_at)
-        this.created_at = currentDate;
-
-    next();
 });
+
+
 //error 1101
 userSchema.plugin(uniqueValidator);
 

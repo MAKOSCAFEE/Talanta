@@ -17,7 +17,8 @@
         "nodemailer": "^0.6.3",
         "request": "^2.34.0",
         "sugar": "^1.4.1",
-        "xml2js": "^0.4.2"
+        "xml2js": "^0.4.2",
+        "mongoose-unique-validator": "^0.4.1"
     },
     "devDependencies": {
         "gulp": "^3.6.2",
@@ -31,16 +32,14 @@
         "karma": "^0.12.19",
         "karma-chrome-launcher": "^0.1.4",
         "karma-jasmine": "^0.1.5",
-        "karma-phantomjs-launcher": "^0.1.4",
-        "mongoose-unique-validator": "^0.4.1"
+        "karma-phantomjs-launcher": "^0.1.4"
     },
     "engines": {
         "node": ">=0.10.0"
     },
     "scripts": {
         "start": "node server.js",
-        "test": "karma start public/test/karma.conf.js",
-        "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
+        "test": "karma start public/test/karma.conf.js"
     },
     "private": true
 }
